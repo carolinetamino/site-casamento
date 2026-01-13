@@ -966,7 +966,9 @@
     </div>
 </section>
 
-    <section id="rsvp" class="py-20 px-4 bg-white bg-cover bg-center" style="background-image: url('https://i.imgur.com/jMb4uBw.png');">
+
+
+<!-- <section id="rsvp" class="py-20 px-4 bg-white bg-cover bg-center" style="background-image: url('./Fotos_png/fundo.png');">
         <div class="max-w-2xl mx-auto">
             <h2 class="font-serif text-5xl md:text-6xl text-center mb-8 text-black">
                 Confirme a sua Presença
@@ -1032,10 +1034,12 @@
                 </div>
             </form>
         </div>
-    </section>
+    </section>  -->
+    
 
 
- <section id="mensagens" class="py-20 px-4 bg-white bg-cover bg-center" style="background-image: url('https://i.imgur.com/jMb4uBw.png');">
+
+ <section id="mensagens" class="py-20 px-4 bg-white bg-cover bg-center" style="background-image: url('./Fotos_png/fundo.png');">
     <div class="max-w-4xl mx-auto">
         <h2 class="font-serif text-5xl md:text-6xl text-center mb-8 text-black">
             Deixe uma Mensagem
@@ -1078,27 +1082,34 @@
             </div>
         </form>
         
-        <div class="space-y-6">
-            <div class="bg-gray-50 p-6 border-l-4 border-gray-300">
-                <p class="text-gray-700 italic mb-2">"Eles crescem tão rápido 🥲
+        <div class="mt-16 max-w-3xl mx-auto">
+            <h3 class="font-serif text-3xl text-center mb-8 text-black">Mural de Recados</h3>
+            
+            <div class="relative bg-white p-8 md:p-12 shadow-xl border border-gray-100 rounded-lg min-h-[200px] flex items-center justify-center">
 
-Que coisa boa em! Muita satisfação em receber o convite para prestigiar o casamento de vocês! Se a festa for 1% tão daora quanto os noivos, vai deixar o especial de ano novo do Roberto Carlos no chinelo, vai vendo kkkkkkk
+                <div id="muralContainer" class="text-center w-full z-10">
+                    <p id="muralTexto" class="text-xl md:text-2xl text-gray-700 italic mb-6 leading-relaxed">
+                        Carregando mensagens dos amigos...
+                    </p>
+                    <p id="muralAutor" class="text-sm font-bold uppercase tracking-widest text-black">
+                        
+                    </p>
+                </div>
 
-Muito amor, felicidade, alegria, sucesso e diversão pra vocês, lindões!"</p>
-                <p class="text-sm text-gray-500 font-semibold">— Jorj0 e DP</p>
+                <button onclick="mudarMensagem(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 p-2 hover:text-gray-600 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="mudarMensagem(1)" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 p-2 hover:text-gray-600 transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
             </div>
             
-            <div class="bg-gray-50 p-6 border-l-4 border-gray-300">
-                <p class="text-gray-700 italic mb-2">"Tem sido uma grande honra e alegria acompanhar o surgimento e crescimento desse amor !
-                    Desejo que essa nova etapa seja repleta de ainda mais amor, cumplicidade e aventuras! 
-                    Que vocês sejam absurdamente felizes! Amo muito vocês"</p>
-                <p class="text-sm text-gray-500 font-semibold">— Thami</p>
-            </div>
+            <p id="contadorMensagens" class="text-center text-gray-400 text-xs mt-4 tracking-wide"></p>
         </div>
     </div>
 </section>
 
-<section id="detalhes" class="py-20 px-4 bg-gray-50 bg-cover bg-center bg-no-repeat" style="background-image: url('https://i.imgur.com/jMb4uBw.png');" >
+<section id="detalhes" class="py-20 px-4 bg-gray-50 bg-cover bg-center bg-no-repeat" style="background-image: url('./Fotos_png/fundo.png');" >
     <div class="max-w-6xl mx-auto">
         <h2 class="font-serif text-5xl md:text-6xl text-center mb-16 text-black">
             Detalhes do Evento
@@ -1181,7 +1192,7 @@ Muito amor, felicidade, alegria, sucesso e diversão pra vocês, lindões!"</p>
             }
         });
     });
-    
+ /*   
 // ========================================
 // FORMULÁRIO RSVP (COM GOOGLE SHEETS)
 // ========================================
@@ -1235,7 +1246,7 @@ rsvpForm.addEventListener('submit', function(e) {
         btnEnviar.textContent = textoOriginal;
         btnEnviar.disabled = false;
     });
-});
+}); */
     
 // ========================================
 // SELECIONAR PRESENTE
@@ -1329,7 +1340,7 @@ function selecionarPresente(nome, valor) {
             });
         }
     });
-    
+
 // ========================================
 // FORMULÁRIO DE MENSAGENS (COM GOOGLE SHEETS)
 // ========================================
@@ -1660,6 +1671,94 @@ function avisarEnvioPresente() {
         btnAvisar.disabled = false;
     });
 }
+
+// ========================================
+// CARROSSEL DE MENSAGENS (DO SHEETS)
+// ========================================
+
+// ⚠️ SUBSTITUA PELA URL DA SUA NOVA IMPLANTAÇÃO
+const URL_MENSAGENS_GET = 'https://script.google.com/macros/s/AKfycbxMBnBghKc--AE6BcA2ELPxSPOEFaRKZIK2SXqrJ79OObpWLrgiHHJcTs6shWwUZxNG/exec'; 
+
+let mensagensData = [];
+let msgAtualIndex = 0;
+
+// Elementos do DOM
+const muralTexto = document.getElementById('muralTexto');
+const muralAutor = document.getElementById('muralAutor');
+const contadorMsgs = document.getElementById('contadorMensagens');
+
+// Função para buscar mensagens
+function carregarMensagens() {
+    fetch(URL_MENSAGENS_GET)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                mensagensData = data;
+                msgAtualIndex = 0;
+                atualizarMural();
+            } else {
+                muralTexto.textContent = "Seja o primeiro a deixar uma mensagem!";
+                muralAutor.textContent = "";
+            }
+        })
+        .catch(error => {
+            console.error('Erro ao buscar mensagens:', error);
+            // Fallback manual caso dê erro ou a planilha esteja vazia
+            mensagensData = [
+                { nome: "Caroline & Tamino", texto: "Estamos muito felizes em compartilhar esse momento com vocês!" },
+                { nome: "Família", texto: "Que a felicidade de hoje dure para sempre." }
+            ];
+            atualizarMural();
+        });
+}
+
+// Função para atualizar o HTML
+function atualizarMural() {
+    if (mensagensData.length === 0) return;
+
+    // Efeito de fade out
+    muralTexto.style.opacity = '0';
+    muralAutor.style.opacity = '0';
+
+    setTimeout(() => {
+        const msg = mensagensData[msgAtualIndex];
+        muralTexto.textContent = `"${msg.texto}"`;
+        muralAutor.textContent = `— ${msg.nome}`;
+        
+        // Contador
+        contadorMsgs.textContent = `${msgAtualIndex + 1} de ${mensagensData.length}`;
+
+        // Efeito de fade in
+        muralTexto.style.transition = 'opacity 0.5s';
+        muralAutor.style.transition = 'opacity 0.5s';
+        muralTexto.style.opacity = '1';
+        muralAutor.style.opacity = '1';
+    }, 300);
+}
+
+// Navegação (Anterior / Próximo)
+function mudarMensagem(direcao) {
+    if (mensagensData.length === 0) return;
+
+    msgAtualIndex += direcao;
+
+    // Loop infinito
+    if (msgAtualIndex >= mensagensData.length) {
+        msgAtualIndex = 0;
+    } else if (msgAtualIndex < 0) {
+        msgAtualIndex = mensagensData.length - 1;
+    }
+
+    atualizarMural();
+}
+
+// Iniciar carregamento quando a página abrir
+document.addEventListener('DOMContentLoaded', carregarMensagens);
+
+// Opcional: Passar mensagem automaticamente a cada 10 segundos
+setInterval(() => {
+    if(mensagensData.length > 1) mudarMensagem(1);
+}, 10000);
     
 </script>
 
